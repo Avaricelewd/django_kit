@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .headers{
+            width: 500px;
+            height: 600px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        .first{
+            width: 400px;
+            height: 100px;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 100px;
+            margin: 0 auto;
+        }
+        .second{
+             width: 400px;
+            height: 100px;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 100px;
+             margin: 0 auto;
+        }
+        .four{
+             width: 400px;
+            height: 100px;
+            border: 1px solid blueviolet;
+            text-align: center;
+            {#margin-top: 10px;#}
+            line-height: 80px;
+             margin: 0 auto;
+        }
+        input{
+            height: 50px;
+            width: 200px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            margin-left: 10px;
+        }
+        .five{
+            width: 400px;
+            height: 100px;
+            border: 1px solid blue;
+             margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+        }
+        .a{
+            width: 100px;
+            height: 30px;
+        }
+        .six{
+            width: 400px;
+            height: 30px;
+            border: 1px solid blue;
+            {#text-align: center;#}
+            {#line-height: 100px;#}
+            margin: 0 auto;
+            text-align: right;
+        }
+        .six_1{
+            width: 400px;
+            height: 30px;
+            vertical-align:center;
+        }
+        a{
+            text-decoration:none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="headers">
+        <h1 style="text-align: center">人工智能舔狗</h1>
+        <div class="first">
+            <input type="text" name="his_name" placeholder="请输入对方的昵称"><button type="button">随机</button>
+        </div>
+        <div class="second">
+            <input type="text" name="your_name" placeholder="请输入你的昵称"><button type="button">随机</button>
+        </div>
+
+        <div class="five">
+            请选择你的头像<input type="file" name="your_avatar" accept="image/*" class="a"><br>
+            请选择对方的头像<input type="file" name="his_avatar" accept="image/*" class="a">
+        </div>
+        <div class="six">
+            <input type="submit" class="six_1" value="点击提交，选择模式，即可开始">
+        </div>
+        <div class="four">
+            <a href="/chat/index/"><button type="button">我想被狂舔 </button></a><a href="/chat/index2/"><button type="button">我要做舔狗</button></a>
+    </div>
+        </div>
+
+    </form>
+</body>
+</html>

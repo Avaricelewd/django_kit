@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>json压缩、解压</title>
+    <style>
+        body{
+            background-image: url({% static 'json.jpg' %});
+            background-size: 100% 100%;
+        }
+           .first{
+            width: 400px;
+            height: 500px;
+            {#border: 1px solid blue;#}
+        }
+           .first_list{
+                width: 400px;
+            height: 500px;
+            {#border: 1px solid blue;#}
+               margin-left: 100px;
+           }
+           .headers {
+            width: 900px;
+            height: 500px;
+            {#border: 1px solid red;#}
+            display: flex;
+            margin: 0 auto;
+            margin-top: 80px ;
+        }
+          #a{
+            width: 400px;
+            height: 495px;
+        }
+        a{
+            text-align: center;
+            width: 100px;
+            height: 30px;
+        }
+          textarea{
+            opacity: 0.5;
+        }
+        .aaa{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color: red; text-align: center;">json压缩、解压缩</h1>
+<div class="aaa"><a href="/weather/index2/"><button>返回首页</button></a></div>
+ <div class="headers">
+<form method="post" action="/list_json/json/">
+    {% csrf_token %}
+        <div class="first">
+            <textarea name="json" placeholder="请输入你要解析的json数据" id="a">{{ json_list_raw }}</textarea>
+        </div>
+        <div class="third"><input type="submit" value="压缩"></div>
+</form>
+     <form method="post" action="/list_json/json_raw/">
+        {% csrf_token %}
+            <div class="first_list">
+                <textarea name="json_jx" placeholder="请输入你要解析的json数据" id="a">{{ json_list }}</textarea>
+            </div>
+          <div class="third"><input type="submit" value="解压"></div>
+    </form>
+    </div>
+
+
+</body>
+</html>

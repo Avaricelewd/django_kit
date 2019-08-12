@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>匿名投票</title>
+    <style>
+        body{
+            margin: 0 auto;
+            background-color: beige;
+        }
+        .first{
+            width: 400px;
+            height: 300px;
+            {#border:1px solid red;#}
+            margin: 0 auto;
+        }
+         ul{
+            list-style: none;
+             text-align: center;
+        }
+        li{
+            margin-top:40px;
+        }
+         .headers{
+            width: 100%;
+            height: 300px;
+            {#border: 1px solid green;#}
+            display: flex;
+        }
+        .second{
+            width: 100%;
+            height: 280px;
+            {#margin-top: 80px;#}
+            {#border: 1px solid red;#}
+            background-image: url({% static '/vote/../../static/video_src/../../static/vote/投票1.gif' %});
+            background-size: 100% 280px;
+        }
+         .third{
+             width: 400px;
+            height: 300px;
+            {#border:1px solid red;#}
+            background-image: url({% static '/vote/投票2.jpg' %});
+            background-size: 400px 300px;
+        }
+         .four{
+             width: 400px;
+            height: 300px;
+            {#border:1px solid red;#}
+            {#margin-left: 10%;#}
+            background-image: url({% static '/vote/投票3.jpg' %});
+            background-size: 400px 300px;
+        }
+        .message{
+            width: 100%;
+            height: 80px;
+            {#line-height: 20px;#}
+            {#border: 1px solid red;#}
+        }
+        a{
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;margin-top: 100px;color: black">演讲者 :{{ name }}  支持率：{{ Percentage }}%</h1>
+
+<form action="/student_vote/select/" method="post">
+    {% csrf_token %}
+    <div class="headers">
+    <div class="third"></div>
+    <div class="first">
+        <ul >
+            <li><input type="hidden" value="{{ name }}" name="name"></li>
+            <li><input type="radio" value="0" name="{{ name }}">弃票</li>
+            <li> <input type="radio" value="1" name="{{ name }}">支持</li>
+            <li><input type="radio" value="2" name="{{ name }}">不支持</li>
+            <li><input type="submit" value="提交" id="a"> </li>
+
+        </ul>
+    </div>
+        <div class="four"></div>
+    </div>
+    <div class="message"><h1 style="text-align: center;color: red" >{{ message }}</h1></div>
+    <div class="second"></div>
+</form>
+
+</body>
+</html>

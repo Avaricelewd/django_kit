@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>天气首页</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <style>
+        body{
+            text-align: center;
+            background-image: url({% static '背景.png' %});
+            background-size: 100%  100%;
+        }
+        ul{
+            list-style: none;
+        }
+        .headers{
+            position: relative;
+             width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            {#overflow: hidden;#}
+
+
+        }
+        #a{
+            color: white;
+        }
+        .second{
+            width: 300px;
+            height: 200px;
+            {#border: 2px solid green;#}
+            line-height: 22px;
+             color: black;
+        }
+        .header_top{
+            margin: 0;
+            width: 100%;
+            height: 400px;
+            {#border: 1px solid red;#}
+            display: flex;
+        }
+        .header_top_first{
+            width: 500px;
+            height: 400px;
+            {#border: 1px solid green;#}
+            margin-left: 50px;
+            line-height: 40px;
+        }
+        .header_top_second{
+            width: 200px;
+            height: 400px;
+            {#border: 1px solid black;#}
+             margin-left: 50px;
+            line-height: 350px
+        }
+        #third{
+            width: 600px;
+            height: 400px;
+            {#border: 1px solid blue;#}
+             margin-left: 50px;
+        }
+        .a{
+            width: 800px;
+            height: 30px;
+            {#border: 1px solid red;#}
+            display: flex;
+            margin: 0 auto;
+        }
+        .b{
+            width: 530px;
+            height: 30px;
+            {#border: 1px solid blue;#}
+        }
+        .c{
+            width: 100px;
+            height: 30px;
+            {#border: 1px solid blue;#}
+        }
+
+    </style>
+</head>
+<body>
+<h1 style="margin: 0 auto;">{{ parent }} {{ city }} {{ time }}</h1>
+<div class="a">
+    <div class="b">
+        <form method="post" action="/weather/select/">
+            {% csrf_token %}
+            <input name="address" type="text">
+            <input type="submit" value="查询天气">
+        </form>
+    </div>
+   <div class="c"> <a href="/weather/index2/"><button>返回首页</button></a></div>
+</div>
+
+<div class="header_top">
+    <div class="header_top_first">
+        <ul>
+            <li id="a"><h2>{{ ymd }}{{ week }}</h2></li>
+            <li><img src="/static/weather_img/{{ type}}.png" style="width: 30px; height: 30px"></li>
+            <li><img src="/static/weather_img/{{ type}}.png" style="width: 30px; height: 30px"></li>
+            <li id="a">{{ high }}</li>
+            <li id="a">{{ low }}</li>
+            <li id="a">湿度：{{ shidu }}</li>
+            <li id="a">pm2.5：{{ pm25 }}</li>
+            <li id="a">空气质量：{{ quality }}</li>
+            <li id="a">注意：{{ ganmao }}</li>
+        </ul>
+    </div>
+    <div class="header_top_second"><h2>未来十五天的天气</h2> </div>
+    <div id="third"></div>
+</div>
+
+<div style="margin-top:50px;display: flex;
+            flex-wrap:wrap;">
+{% for i in forecast %}
+    <div class="headers">
+        <div class="second">
+                <ul>
+                    <li>{{ i.ymd }} {{ i.week }}</li>
+                    <li>{{ i.high }}</li>
+                    <li>{{ i.low }}</li>
+                    <li>{{ i.fx }}</li>
+                    <li>风级：{{ i.fl }}</li>
+                    <li ><img src="/static/weather_img/{{ i.type}}.png" style="width: 30px; height: 30px"></li>
+                    <li>注意：{{ i.notice }}</li>
+                    <li></li>
+                </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{#style="background-image: url({% static '多云.jpg' %});background-size: 300px 200px"#}
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById('third'));
+    var option = {
+    title: {
+        text: '周播报'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['高温','低温','空气质量','天气状况','风度']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周日','周一','周二','周三','周四','周五','周六']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'高温',
+            type:'line',
+            stack: '总量',
+            data:[39, 36, 34, 34, 33, 29, 30]
+        },
+        {
+            name:'低温',
+            type:'line',
+            stack: '总量',
+            data:[28, 26, 26, 21, 20, 22, 21]
+        }
+    ]
+};
+    myChart.setOption(option);
+</script>
+</html>

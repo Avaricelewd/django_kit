@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解析首页</title>
+    <style>
+        div{
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<form action="/video_jx/video/" method="post">
+    {% csrf_token %}
+    <textarea  name="video" id="a" placeholder="请输入要解析的视频网址 "></textarea>
+<input type="submit" id="encry" value="确定">
+</form>
+<div>
+    <video src="{{ src }}" autoplay>{{ src }}</video>
+</div>
+</body>
+</html>

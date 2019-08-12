@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>应用首页</title>
+{#     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"#}
+{#          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">#}
+{#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"#}
+{#            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"#}
+{#            crossorigin="anonymous"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"#}
+{#            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"#}
+{#            crossorigin="anonymous"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"#}
+{#            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"#}
+{#            crossorigin="anonymous"></script>#}
+{#    <script src="https://kit.fontawesome.com/e7448b18a1.js"></script>#}
+    <style>
+        h1{
+            text-align: center;
+        }
+        a{
+            text-decoration:none;
+            color: green;
+        }
+        body{
+            margin: 0;
+            background-image: url({% static '主页.jpg' %});
+            background-size: 100% 100%;
+        }
+        div{
+            width: 200px;
+            height: 100px;
+            {#border: 1px solid red;#}
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<h1>请选择应用：</h1>
+ <div><a href="/haxi/haxi_list/">1.哈希加密</a></div>
+ <div><a href="/b64_list/b64/">2.base64加密解密</a></div>
+<div><a href="/BMI/BMI/">3.BMI指数测量</a></div>
+<div><a href="/weather/index/">4.天气状况</a></div>
+<div><a href="/list_json/json">5.json压缩、解压</a></div>
+
+
+
+</body>
+</html>

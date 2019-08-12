@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>BMI测量身高体重</title>
+    <style>
+        body{
+            margin: 0 ;
+            background-image: url({% static '2.jpg' %});
+            background-size: 100% 100%;
+        }
+        .headers{
+            width: 1000px;
+            height: 500px;
+            {#border: 1px solid red;#}
+            margin: 0 auto;
+            margin-top: 150px;
+            text-align: center;
+            line-height: 60px;
+            display: flex;
+        }
+        .first{
+            width: 400px;
+            height: 400px;
+            {#border: 1px solid red;#}
+            margin-left: 20%;
+        }
+        .a{
+            width: 400px;
+            height: 400px;
+            {#border: 1px solid red;#}
+        }
+        .top{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h2 style=" text-align: center;">身体质量指数 (Body Mass Index, 简称BMI), 亦称克托莱指数, 是目前国际上常用的衡量人体胖瘦程度以及是否健康的一个标准。BMI 值超标，意味着你必须减肥了。</h2>
+ <div class="top"><a href="/weather/index2/"><button>返回首页</button></a></div>
+<form method="post">
+    {% csrf_token %}
+    <div class="headers">
+        <div class="a">
+        请输入你的身高：<input type="number" name="height" ><br>
+        请输入你的体重：<input type="number" name="weight"><br>
+        你的BIM值为：<input value="{{ BMI }}" ><br>
+        BMI标准：<input value="中国标准"><br>
+        你的身体状态为：{{ a }}<br>
+        <input type="submit"><br>
+        </div>
+          <div class="first">
+         <TABLE>
+            <tr>
+                <th width="150px">分类</th>
+                <th width="150px">BMI范围</th>
+            </tr>
+                <tr>
+                <th width="150px">偏瘦</th>
+                <th width="150px"><= 18.4</th>
+            </tr>
+                <tr>
+                <th width="150px">正常</th>
+                <th width="150px">18.5~23.9</th>
+            </tr>
+                <tr>
+                <th width="150px">过重</th>
+                <th width="150px">24.0~27.9</th>
+            </tr>
+                <tr>
+                <th width="150px">肥胖</th>
+                <th width="150px">>= 28.0/th>
+            </tr>
+        </TABLE>
+    </div>
+
+        </div>
+ </div>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>哈希加密</title>
+       <style>
+            body{
+                margin: 0;
+                background-image: url({% static 'haxi.jpg' %});
+                background-size: 100% 100%;
+            }
+            .headers {
+                width: 800px;
+                height: 500px;
+                {#border: 1px solid red;#}
+                display: flex;
+                margin: 0 auto;
+                margin-top: 80px ;
+            }
+            .first{
+                width: 400px;
+                height: 500px;
+                {#border: 1px solid blue;#}
+            }
+            #a{
+                width: 400px;
+                height: 495px;
+            }
+            textarea{
+                opacity: 0.5;
+            }
+            .second{
+                width: 100%;
+                height: 50px;
+                {#border: 1px solid blue;#}
+            }
+           .aaa{
+               text-align: center;
+           }
+    </style>
+</head>
+<body>
+<h1 style="color: red; text-align: center;">哈希加密</h1>
+<div class="aaa"><a href="/weather/index2/"><button>返回首页</button></a></div>
+<div class="headers">
+    <form action="/haxi/haxi_list/" method="post">
+        {% csrf_token %}
+    <div class="first" contenteditable="true" >
+        <textarea  name="t" id="a" placeholder="请输入要加密的文字或者数字 ">{{ text }}</textarea>
+    </div>
+    <div class="second">
+        <input type="submit"  value="加密">
+    </div>
+</form>
+    <form action="/b64_list/b64_j/" method="post">
+        {% csrf_token %}
+    <div class="first" contenteditable="true" data-text="">
+        <textarea  name="" id="a" placeholder="请输入要解密的文字或者数字 " wrap="virtual">{{ a }}</textarea>
+    </div>
+        <div class="second">
+            <input type="submit" value="解密">
+        </div>
+        </form>
+</div>
+
+</body>
+</html>

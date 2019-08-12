@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>查询结果</title>
+    <style>
+        body{
+            text-align: center;
+            background-image: url({% static 'vote/2.jpg' %});
+            background-size: 100% 100%;
+        }
+      .a{
+          width: 300px;
+          height: 100px;
+          {#border: 1px solid red;#}
+          text-align: center;
+          margin: 0 auto;
+          line-height: 80px;
+      }
+      .b{
+          width: 800px;
+          height: 200px;
+          {#border: 1px solid red;#}
+          text-align: center;
+          margin: 0 auto;
+        }
+        table{
+            margin: auto;
+            line-height: 80px;
+            font-family: '楷体';
+            color: black;
+        }
+        h1{
+            font-family: '楷体';
+        }
+        a{
+            text-decoration:none;
+        }
+        #a{
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <h1 style="text-align: center;">请输入要查询的名字</h1>
+    <div class="a"><input type="text" name="name"><button type="submit">查询</button></div>
+    <a href="/student_vote/index/"><button type="button" id="a">返回首页</button></a>
+</form>
+<div class="b">
+<table>
+    <tr>
+        <td>演讲人</td>
+        <td>支持人数</td>
+        <td>不支持人数</td>
+        <td>弃票人数</td>
+        <td>总人数</td>
+        <td>支持率</td>
+    </tr>
+    <tr>
+        <td>{{ name }}</td>
+        <td>{{ support }}</td>
+        <td> {{ onsupport }}</td>
+        <td> {{ waiver }}</td>
+        <td> {{ total }}</td>
+        <td> {{ Percentage }}</td>
+    </tr>
+</table>
+    </div>
+</body>
+</html>
